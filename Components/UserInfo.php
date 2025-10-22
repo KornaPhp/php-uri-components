@@ -41,16 +41,10 @@ final class UserInfo extends Component implements UserInfoInterface
      */
     public function __construct(
         Stringable|string|null $username,
-        #[SensitiveParameter]
-        Stringable|string|null $password = null
+        #[SensitiveParameter] Stringable|string|null $password = null,
     ) {
         $this->username = $this->validateComponent($username);
-        $password = $this->validateComponent($password);
-        if (null === $this->username && null !== $password) {
-            throw new SyntaxError('It is not possible to associated a password to an undefined user.');
-        }
-
-        $this->password = $password;
+        $this->password = $this->validateComponent($password);
     }
 
     /**

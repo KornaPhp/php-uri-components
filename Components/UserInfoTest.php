@@ -250,13 +250,6 @@ final class UserInfoTest extends TestCase
         self::assertEquals(UserInfo::fromUri($uri), UserInfo::fromAuthority($auth));
     }
 
-    public function testItFailsToCreateANewInstanceWhenTheUsernameIsUndefined(): void
-    {
-        $this->expectException(SyntaxError::class);
-
-        new UserInfo(null, 'password');
-    }
-
     /**
      * @param array{user: ?string, pass: ?string} $components
      */
